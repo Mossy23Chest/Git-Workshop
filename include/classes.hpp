@@ -1,6 +1,44 @@
 #include "libs.hpp"
 
-// TODO move Student here
+using namespace std;
+
+class Student
+{
+    private:
+        int id;
+        std::string name;
+        std::vector<double> grades;
+        double average;
+
+    public:
+        Student(int id, std::string name, std::vector<double> grades);
+
+        int getId();
+         std::string getName() const;
+         std::vector<double> getGrades() const ;
+        std::vector<std::string> getCourse() const;
+        double getAverage() const;
+
+        void calculateAverage()
+        {
+
+             double s = 0, k=0;
+
+             for(double i : grades)
+            {
+
+                s = s + i;
+                k++;
+            }
+
+
+            average = s/k;
+
+        }
+        bool hasFailed();
+
+        friend std::ostream& operator<<(std::ostream& out, const Student& student);
+};
 
 class University
 {
@@ -11,11 +49,11 @@ class University
     public:
         University(std::string name, std::vector<Student> students);
 
-        std::string getName();
-        std::vector<Student> getStudents();
+        std::string getName()  ;
+        std::vector<Student> getStudents() ;
 
         void addStudent(Student student);
-        virtual void printPassingStudents() = 0;  
+        virtual void printPassingStudents() = 0;
         virtual void printFailingStudents() = 0;
 };
 
@@ -25,12 +63,12 @@ University::University(std::string name, std::vector<Student> students)
     this->students = students;
 }
 
-std::string University::getName()
+ std::string University::getName()
 {
     return this->name;
 }
 
-std::vector<Student> University::getStudents()
+ std::vector<Student> University::getStudents()
 {
     return this->students;
 }
@@ -49,13 +87,23 @@ class Faculty : public University
         Faculty(std::string name, std::vector<Student> students);
 
         void addStudent(Student student);
-        void printPassingStudents();  
+        void printPassingStudents();
         void printFailingStudents();
+        std::string getCourse(int i) const;
 
         friend std::ostream& operator<<(std::ostream& out, const Faculty& faculty);
 };
 
-Faculty::Faculty(std::string name, std::vector<Student> students) : University(name, students) {}
+
+std::string Faculty::getCourse(int i) const
+{
+    return this->courses[i];
+}
+
+Faculty::Faculty(std::string name, std::vector<Student> students):University{name, students}{
+
+
+};
 
 void Faculty::addStudent(Student student)
 {
@@ -94,10 +142,12 @@ std::ostream& operator<<(std::ostream& out, const Faculty& faculty)
     for(int i = 0; i < faculty.students.size(); i++)
     {
         out << faculty.students.at(i) << "\n\t";
-
+        int k=0;
         for(double j : faculty.students.at(i).getGrades())
         {
-            out << "Studentul " << faculty.students.at(i).getName() << j < 5 ? " a picat materia " : "a trecut materia " << faculty.students.at(i).getCourse() << "\n";
+            string message = (j < 5) ? " a picat materia " : " a trecut materia ";
+            out << "Studentul " << faculty.students.at(i).getName() << message<<faculty.getCourse(k) <<"\n";
+            k++;
         }
     }
 
