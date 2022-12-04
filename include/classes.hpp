@@ -1,10 +1,7 @@
 #include "libs.hpp"
 
-<<<<<<< HEAD:include/classes.hpp
 using namespace std;
 
-=======
->>>>>>> 124293a3fc1897d18a2328163e4ac3108a716b4f:include/classes.hpp
 class Student
 {
     private:
