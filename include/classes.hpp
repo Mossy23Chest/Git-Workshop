@@ -1,7 +1,10 @@
 #include "libs.hpp"
 
+<<<<<<< HEAD:include/classes.hpp
 using namespace std;
 
+=======
+>>>>>>> 124293a3fc1897d18a2328163e4ac3108a716b4f:include/classes.hpp
 class Student
 {
     private:
@@ -14,6 +17,7 @@ class Student
         Student(int id, std::string name, std::vector<double> grades);
 
         int getId();
+<<<<<<< HEAD:include/classes.hpp
          std::string getName() const;
          std::vector<double> getGrades() const ;
         std::vector<std::string> getCourse() const;
@@ -35,10 +39,34 @@ class Student
             average = s/k;
 
         }
+=======
+        std::string getName();
+        std::vector<double> getGrades();
+        double getAverage();
+        
+        void calculateAverage(){
+        
+        	double s=0, k=0;
+        	
+        	for(double i : grades)
+        	{
+        		s=s+i;
+        		k++;
+        	}
+        	
+        	average = s/k;
+        	
+        	
+        };
+>>>>>>> 124293a3fc1897d18a2328163e4ac3108a716b4f:include/classes.hpp
         bool hasFailed();
 
         friend std::ostream& operator<<(std::ostream& out, const Student& student);
 };
+<<<<<<< HEAD:include/classes.hpp
+=======
+
+>>>>>>> 124293a3fc1897d18a2328163e4ac3108a716b4f:include/classes.hpp
 
 class University
 {

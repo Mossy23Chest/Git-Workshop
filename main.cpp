@@ -1,5 +1,9 @@
 #include "include/classes.hpp"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 124293a3fc1897d18a2328163e4ac3108a716b4f
 Student::Student(int id, std::string name, std::vector<double> grades)
 {
     this->id = id;
